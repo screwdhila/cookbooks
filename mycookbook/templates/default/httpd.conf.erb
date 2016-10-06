@@ -1,0 +1,56 @@
+ServerTokens OS
+ServerRoot "/etc/httpd"
+PidFile run/httpd.pid
+Timeout 60
+KeepAlive Off
+MaxKeepAliveRequests 100
+KeepAliveTimeout 15
+<IfModule prefork.c>
+	StartServers       8
+	MinSpareServers    5
+	MaxSpareServers   20
+	ServerLimit      256
+	MaxClients       256
+	MaxRequestsPerChild  4000
+</IfModule>
+<IfModule worker.c>
+	StartServers         4
+	MaxClients         300
+	MinSpareThreads     25
+	MaxSpareThreads     75 
+	ThreadsPerChild     25
+	MaxRequestsPerChild  0
+</IfModule>
+Listen 80
+LoadModule log_config_module modules/mod_log_config.so
+LoadModule mime_module modules/mod_mime.so
+LoadModule dir_module modules/mod_dir.so
+LoadModule authz_host_module modules/mod_authz_host.so
+Include conf.d/*.conf
+User <%= @user %>
+Group <%= @group %>
+ServerAdmin root@localhost
+ServerName <%= @servername %>
+UseCanonicalName Off
+DocumentRoot "<%= @docroot %>"
+<Directory />
+    Options FollowSymLinks
+    AllowOverride None
+</Directory>
+<Directory "<%= @docroot %>">
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+DirectoryIndex index.html index.html.var
+TypesConfig /etc/mime.types
+DefaultType text/plain
+ErrorLog <%= @errorlog %>
+LogLevel warn
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+LogFormat "%h %l %u %t \"%r\" %>s %b" common
+LogFormat "%{Referer}i -> %U" referer
+LogFormat "%{User-agent}i" agent
+CustomLog <%= @accesslog %> combined
+

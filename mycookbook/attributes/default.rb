@@ -1,0 +1,5 @@
+default['apache']['error_log'] = 'logs/error_log'
+default['apache']['access_log'] = 'logs/access_log'
+default['apache']['docroot'] = '/srv/www/docroot'
+default['apache']['user'] = 'webuser'
+default['apache']['group']='webgroup'

@@ -1,0 +1,43 @@
+<html>
+	<body>
+	<h3>attributes defined in attributes/default.rb file</h3>
+	<% node['apache'].each do |key, value| -%>
+    		<% unless value.empty? -%>
+        		node['apache']['<%= key %>'] =<%= value %><br>
+    		<% end %>
+	<% end %>
+	<h3>example attributes provided by ohai</h3>
+	node['platform'] = <%= node['platform'] %>	<br>
+	node['platform_version'] = <%= node['platform_version'] %>	 <br>
+	node['platform_family'] = <%= node['platform_family'] %>	<br>
+	node['macaddress'] = <%= node['macaddress'] %>	<br>
+	node['hostname'] = <%= node['hostname'] %>	<br>
+	node['fqdn'] = <%= node['fqdn'] %>	<br>
+	node['ipaddress'] = <%= node['ipaddress'] %>	<br>
+	node['recipes'] = <%= node['recipes'] %>	<br>
+	<a href="https://docs.chef.io/ohai.html">Refer to this link</a>
+	<h3>example opsworks databags</h3>
+        <h5>aws_opsworks_stack databag: </h5>
+	stack name = <%= @stack['name'] %><br>
+	region = <%= @stack['region'] %><br>
+	arn = <%= @stack['arn'] %><br>
+	vpc_id = <%= @stack['vpc_id'] %><br>
+        <h5>aws_opsworks_instance databag: </h5>
+	instance_id = <%= @instance['instance_id'] %><br>
+	ami_id = <%= @instance['ami_id'] %><br>
+	public_ip = <%= @instance['public_ip'] %><br>
+	created_at = <%= @instance['created_at'] %><br>
+        <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/data-bags.html">List of OpsWorks exposed databags can be found here </a>
+        		
+	<h3>custom databags</h3>
+	<% @mydatabag.each do |key,value| -%>
+		<% unless value.empty? -%>
+			<%= key %> = <%= value %><br>
+		<% end %>
+	<% end %>
+
+       <h3> app status </h3>
+	 <%= @app1 %><br>
+	 <%= @app2 %><br>
+	 <%= @app3 %><br>
+</html>
