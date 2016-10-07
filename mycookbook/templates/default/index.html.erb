@@ -1,5 +1,6 @@
 <html>
 	<body>
+		<h1> @instance['fqdn']</h1><br>
 	<h3>attributes defined in attributes/default.rb file</h3>
 	<% node['apache'].each do |key, value| -%>
     		<% unless value.empty? -%>
