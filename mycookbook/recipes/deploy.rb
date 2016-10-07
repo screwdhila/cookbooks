@@ -1,7 +1,6 @@
 # deploy a simple static html page that lists attribute/databags etc
-Chef::Log.info("Running #{recipe_name} recipe in the #{cookbook_name} cookbook.")
 log 'Start' do
-  message "MESSAGE: recipe = #{recipe_name} cookbook = #{cookbook_name} - START"
+  message "MESSAGE: cookbook = #{cookbook_name}  recipe = #{recipe_name}  - START"
   level :info
 end
 
@@ -26,7 +25,6 @@ template "#{apache_docroot}/index.html" do
 		)
 end
 log 'End' do
-  message "MESSAGE: recipe = #{recipe_name} cookbook = #{cookbook_name} - END"
+  message "MESSAGE: cookbook = #{cookbook_name}  recipe = #{recipe_name}  - END"
   level :info
 end
-Chef::Log.info("#{recipe_name} recipe run in the #{cookbook_name} cookbook complete.")
