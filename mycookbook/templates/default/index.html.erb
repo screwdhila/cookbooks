@@ -28,16 +28,11 @@
 	public_ip = <%= @instance['public_ip'] %><br>
 	created_at = <%= @instance['created_at'] %><br>
         <a href="http://docs.aws.amazon.com/opsworks/latest/userguide/data-bags.html">List of OpsWorks exposed databags can be found here </a>
-        		
+
 	<h3>custom databags</h3>
 	<% @mydatabag.each do |key,value| -%>
 		<% unless value.empty? -%>
 			<%= key %> = <%= value %><br>
 		<% end %>
 	<% end %>
-
-       <h3> app status </h3>
-	 <%= @app1 %><br>
-	 <%= @app2 %><br>
-	 <%= @app3 %><br>
 </html>
