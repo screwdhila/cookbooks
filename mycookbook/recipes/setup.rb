@@ -24,4 +24,6 @@ directory node['apache']['docroot'] do
         owner node['apache']['user']
         group node['apache']['group']
 end
+log "MESSAGE: recipe = #{recipe_name} cookbook = #{cookbook_name} - END"
+end
 Chef::Log.info("#{recipe_name} recipe run in the #{cookbook_name} cookbook complete.")
