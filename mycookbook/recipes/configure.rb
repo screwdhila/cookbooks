@@ -1,5 +1,5 @@
 #configure apache
-
+Chef::Log.info("Running #{recipe_name} recipe in the #{cookbook_name} cookbook.")
 apache_user = node['apache']['user']
 apache_group = node['apache']['group']
 apache_docroot = node['apache']['docroot']
@@ -27,3 +27,4 @@ template "/etc/httpd/conf/httpd.conf" do
 	)
 	notifies :restart, "service[httpd]"
 end
+Chef::Log.info("#{recipe_name} recipe run in the #{cookbook_name} cookbook complete.")

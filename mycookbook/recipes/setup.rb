@@ -1,6 +1,7 @@
-# this recipe installs some packages 
+# this recipe installs some packages
 #
 #
+Chef::Log.info("Running #{recipe_name} recipe in the #{cookbook_name} cookbook.")
 group node['apache']['group']
 user node['apache']['user'] do
  group node['apache']['group']
@@ -23,3 +24,4 @@ directory node['apache']['docroot'] do
         owner node['apache']['user']
         group node['apache']['group']
 end
+Chef::Log.info("#{recipe_name} recipe run in the #{cookbook_name} cookbook complete.")
