@@ -2,7 +2,7 @@
   <head>
 		<title>My Instance Details </title>
 		<style type="text/css">
-				body { color: white; background-color:  #0F6AC6 }
+				body { color: #0F6AC6 ; background-color: white  }
 		</style>
 	</head>
 	<body>
@@ -34,7 +34,7 @@
 	ami_id = <%= @instance['ami_id'] %><br>
 	public_ip = <%= @instance['public_ip'] %><br>
 	created_at = <%= @instance['created_at'] %><br>
-        
+
 
 	<h3>custom databags</h3>
 	<% @mydatabag.each do |key,value| -%>
